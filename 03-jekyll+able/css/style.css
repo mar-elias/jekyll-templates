@@ -1,0 +1,352 @@
+---
+---
+/* Able v1.2 theme by wordpress http://theme.wordpress.com/themes/able/ Heavily modified for this website.
+License: GNU General Public License v2 or later http://www.gnu.org/licenses/gpl-2.0.html
+*/
+
+/* use Firefox inspector to detect elements */
+
+.arabic-text {
+    font-size:{{ site.font_size_22px }}; /* should be bigger than english text */
+}
+.arabic-text td { /* <td> tags which have class="arabic-text" */
+    line-height: 30px;
+}
+
+/* Make numbers in ordered lists equal size to font: */
+ol > li::marker {
+font-weight: normal; /* was bold */
+font-size:{{ site.font_size_18px }};
+}
+
+ol > li > ol > li::marker { /* 2nd level */
+font-weight: normal;
+}
+
+/* Scroll bar -------------------------------------------------------------- */
+/* width */
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888888;
+  /* border-radius: 10px; rounded edges */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Custom -------------------------------------------------------------- */
+.border-shadows-EL
+{
+    box-shadow: 1px 1px 5px #5b5b5b;
+}
+
+/* Images -------------------------------------------------------------- */
+img {
+    height: auto;
+    max-width: 100%; /* Prevent images from overflowing their boundaries. */
+    outline: 0;
+    vertical-align: baseline;
+}
+img.with_border {
+    border: 1px dotted #000;
+    border-radius: 1px;
+    padding: 0px;
+}
+a,abbr,article,b,bdi,bdo,big,blockquote,body,button,canvas,caption,center,cite,code,col,del,div,dl,dt,em,embed,figure,font,footer,form,frame,frameset,header,hgroup,hr,html,i,iframe,input,label,li,map,mark,menu,nav,ol,option,output,p,pre,progress,q,rp,rt,ruby,s,script,section,select,small,span,strike,strong,sub,summary,table,td,textarea,tfoot,th,thead,time,tr,tt,u,ul,var,video {
+    border: 0;
+    font: inherit;
+    line-height: 22px; /* spacing between lines */
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    text-indent: 0;
+    vertical-align: baseline;
+}
+html {
+    overflow-y: scroll;
+}
+body,button,input,select,textarea {
+    color: #000000;
+    font-family: Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-size: {{ site.font_size_18px }}; /* global font size of all pages and all text */
+    font-weight: 300;
+}
+body {
+    background-color: rgb( 220, 220, 220 ); /* 3/3 background colour behind LYOS (everything/level 3) */
+    background-image:     linear-gradient( rgba( 250, 250, 250, 0.8 ), rgba( 245, 245, 245, 0.8 ) );
+}
+
+/* Links -------------------------------------------------------------- */
+a,a:hover,a:active,a:focus {
+    color: rgb( 13, 61, 155 );
+    color: rgba( 18, 90, 222, 1 ); /* <<<<<< COLOUR OF LINKS (was 13, 61, 155) */
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+    /* color: rgb( 190, 110, 0 ); <<<<<< COLOUR OF LINKS HOVER */
+}
+a:active,a:focus {
+    background: rgb( 235, 235, 235 );
+    background: rgba( 50, 50, 50, .1 );
+}
+#page a {
+    transition: all .1s ease-in;
+}
+
+/* Headings -------------------------------------------------------------- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    border: 0;
+    font: inherit;
+    margin: 0; /* outside the element */
+    outline: 0;
+    padding: 0; /* inside the element */
+    text-indent: 0;
+    vertical-align: baseline;
+    clear: both;
+    font-family: Times, 'Times New Roman', serif, Cambria;
+    font-weight: bold;
+    margin-bottom: 12px; /* free space after titles */
+    margin-top: 15px;
+}
+h1 a:hover,
+h2 a:hover,
+h3 a:hover,
+h4 a:hover,
+h5 a:hover,
+h6 a:hover {
+    text-decoration: none;
+}
+h1 {
+    line-height: normal;
+}
+h2 {
+    line-height: normal;
+}
+h3 {
+    line-height: normal;
+}
+h1 {
+    font-size: {{ site.font_size_48px }};
+}
+h2 {
+    font-size: {{ site.font_size_36px }};
+}
+h3 {
+    font-size: {{ site.font_size_28px }};
+}
+h4 {
+    font-size: {{ site.font_size_22px }};
+}
+h5 {
+    font-size: {{ site.font_size_18px }};
+}
+h6 {
+    font-size: {{ site.font_size_16px }};
+}
+
+/* Typography -------------------------------------------------------------- */
+p {
+    margin-bottom: 10px; /* Paragraph spacing (spacing between paragraphs) margin-top: 0px; */
+}
+b,strong {
+    font-weight: bold;
+}
+del,s,strike {
+    color: rgb( 200, 200, 200 );
+    color: rgba( 200, 200, 200, 1 );
+    text-decoration: line-through;
+}
+em,i {
+    font-style: italic;
+}
+hr {
+    background: rgb( 230, 230, 230 );
+    background: rgba( 230, 230, 230, 0.8 );
+    border: none;
+    color: rgb( 230, 230, 230 );
+    color: rgba( 230, 230, 230, 0.8 );
+    clear: both;
+    float: none;
+    margin: 0 0 25px;
+    width: 100%;
+    height: 1px;
+}
+
+/* Lists -------------------------------------------------------------- */
+dl {
+    margin: 0 0 26px;
+}
+dt {
+    font-weight: 700;
+}
+dd {
+    margin: 0 0 0 26px;
+}
+
+ul {
+    list-style: disc;
+}
+ul ul {
+    list-style: circle;
+}
+ul ul ul {
+    list-style: square;
+}
+ul ul ul ul {
+    list-style: disc;
+}
+
+ol {
+    list-style: decimal;
+}
+ol ol {
+    list-style: lower-roman;
+}
+ol ol ol {
+    list-style: lower-alpha;
+}
+ol ol ol ol {
+    list-style: upper-alpha;
+}
+/* Tables -------------------------------------------------------------- */
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 15px; /*Gap below table*/
+    table-layout: fixed;
+    max-width: 100%;
+    width: 100%;
+}
+tfoot {
+    font-size: {{ site.font_size_10px }};
+}
+th,td,caption {
+    padding: 0 5px;
+}
+th {
+    background: rgb( 240, 240, 240 );
+    background: rgba( 240, 240, 240, 0.8 );
+    border-bottom: 0px solid rgb( 220, 220, 220 );
+    border-bottom: 0px solid rgba( 220, 220, 220, 0.8 );
+    font-size: {{ site.font_size_16px }};
+    line-height: auto;
+    text-align: left;
+}
+td {
+    border-bottom: 0px solid rgb( 230, 230, 230 );
+    border-bottom: 0px solid rgba( 230, 230, 230, 0.8 );
+    line-height: auto;
+    word-wrap: break-word;
+}
+
+/* Grids (books) -------------------------------------------------------------- */
+.grid-container-5cols {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 4 columns */
+    gap: 10px;
+    width: 100%;
+}
+
+.grid-container-4cols {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    gap: 10px;
+    width: 100%;
+}
+
+.grid-container-3cols {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 4 columns */
+    gap: 10px;
+    width: 100%;
+}
+
+.grid-container-2cols {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 4 columns */
+    gap: 10px;
+    width: 100%;
+}
+
+.grid-item {
+    background-color: white;
+    text-align: left;
+}
+
+.grid-item-with-border { /* This border will include the text */
+    background-color: white;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.grid-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    padding: 0px;
+}
+
+.grid-item .caption {
+    padding: 5px 0 5px 0;  /* top, right, bottom, left */
+}
+
+.grid-item .caption-ar {
+    padding: 5px 0 5px 0;
+    text-align: right;
+    direction: rtl;
+}
+
+/* Hymn videos page */
+.grid-hymns {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.hymn-iframe {
+    width: 100%;
+    height: 280px;
+}
+
+/* Headers */
+.toc-header {
+    color:black;
+}
+
+/* Tables */
+.dated-table td {
+    padding-bottom: 5px;
+}
+
+/* footnotes */
+sup {
+    font-size: 0.8rem;
+}
+.footnotes {
+    margin-top: 40px;
+    border-top: 1px solid #ccc;
+}
+
+/* Lists */
+ul,
+ol {
+    margin: 0 40px 10px 40px; /* Clockwise: Top, Right, Bottom, Left */
+    /*padding-left: 26px;*/
+}

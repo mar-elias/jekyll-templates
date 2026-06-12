@@ -1,0 +1,66 @@
+---
+layout: singlePage
+title: Welcome
+permalink: /
+---
+
+
+<style>
+    #headimg {
+        clear: both;
+        background-color: #f4c34033; /* background colour behind the photos or use rgb( 244, 208, 111 ); */
+        position: relative; /* needed for centered-text-on-image */
+    }
+    #headimg img {
+        border-radius: 3px 3px 0 0;
+        box-shadow: 0 0 0px 0 rgba( 0, 0, 0, .2 );
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .centered-text-on-image {
+        position: absolute;
+        top: 50%;         /* Vertically center */
+        left: 50%;        /* Horizontally center */
+        transform: translate(-50%, -50%); /* Offset to center exactly */
+
+        color: white;
+        font-size: 2em;
+        font-weight: bold;
+        text-shadow: 0px 0px 30px rgba(0,0,0,1),
+                     0px 0px 30px rgba(0,0,0,1),
+                     0px 0px 30px rgba(0,0,0,1),
+                     0px 0px 30px rgba(0,0,0,1); /* horisontal vertical blur rgba/1 is fully opaque */
+        white-space: nowrap; /* Prevent line breaks */
+        pointer-events: none; /* So clicks pass through to the link if needed */
+    }
+</style>
+
+
+
+<p style="text-align: center;">
+    <div id="headimg">
+        <a href="{{ site.url }}">
+            <img src="{{ site.url }}/{{ site.cover }}" />
+        </a>
+        <div class="centered-text-on-image" style="font-family:Trajan; font-size: 34px;">
+            {{ site.subtitle_centred_on_image }}
+        </div>
+    </div>
+</p>
+
+
+<p style="text-align: center; font-size: 20px;">
+    Please see <a href="{{ site.url_to_go }}">{{ site.url_to_go_bare }}</a>.
+</p>
+
+
+<p style="text-align: center; font-size: 20px;">
+    For questions, help or guidance you can email me at: <a href="mailto:{{ site.email }}?subject=Hello">{{ site.email }}</a>
+</p>
+
+<p style="text-align: center; font-family:Trajan; font-size: 34px;">
+    And you shall know the truth<br>and the truth shall set you free
+</p>
+

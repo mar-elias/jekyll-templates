@@ -1,0 +1,274 @@
+<!-- This style and script are for making the current scrolled item (tag) bold in the contents list -->
+
+<style>
+    /* 1/2 Style for the list of IDs */
+    #id-list li.visible {
+        font-weight: bold; /* Make the visible ID bold */
+    }
+</style>
+
+<script>
+    // 2/2 Function to get the vertical position of an element relative to the document
+    function getElementTop(el) {
+        const rect = el.getBoundingClientRect();
+        return rect.top + window.scrollY; // Adjust for scroll position
+    }
+
+    // Function to detect the closest heading to the current scroll position
+    function detectClosestHeading() {
+        const idListItems = document.querySelectorAll('#id-list-items li');
+        const headings = Array.from(idListItems).map(li => {
+            const id = li.querySelector('a').getAttribute('href').split('#')[1];
+            return { id, element: document.getElementById(id) };
+        });
+
+        const scrollY = window.scrollY; // Current scroll position
+        let closestId = null;
+        let closestDistance = Infinity; // Initialize with a large value
+
+        headings.forEach(({ id, element }) => {
+            if (element) {
+                const elementTop = getElementTop(element); // Top position of the heading
+                const distance = Math.abs(scrollY - elementTop); // Distance from scroll position
+
+                // Check if this heading is closer than the current closest
+                if (distance < closestDistance) {
+                    closestDistance = distance;
+                    closestId = id;
+                }
+            }
+        });
+
+        // Update the list
+        idListItems.forEach(li => {
+            const id = li.querySelector('a').getAttribute('href').split('#')[1];
+            if (id === closestId) {
+                li.classList.add('visible'); // Add the 'visible' class
+            } else {
+                li.classList.remove('visible'); // Remove the 'visible' class
+            }
+        });
+    }
+
+    // Listen for scroll events
+    window.addEventListener('scroll', detectClosestHeading);
+
+    // Initial check
+    detectClosestHeading();
+</script>
+
+<style>
+    #secondary { /* Left sidebar */
+        min-height: 70vh; /* Required for sticky class to work (see below). It also sets a minimum height of page. */
+
+        width: 25%;
+        float: left;
+        word-wrap: break-word;
+
+        margin-top: 0;
+        margin-right: 0;
+        margin-bottom: 0;
+        margin-left: -100%;
+
+        -moz-box-sizing: border-box;
+        box-sizing:      border-box;
+        padding: 10px;
+    }
+
+    #secondary,
+    #secondary button,
+    #secondary input,
+    #secondary select,
+    #secondary textarea {
+        font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    }
+
+    /* =Widgets (widget area is the secondary column) -------------------------------------------------------------- */
+    .widget-area {
+        font-size: {{ site.font_size_14px }};
+    }
+    .widget-area ul {
+        margin: 0;
+        padding: 0;
+    }
+    .widget-area ul ul {
+        padding-left: 10px;
+    }
+    .widget-area tfoot {
+        font-size: {{ site.font_size_12px }};
+    }
+    .widget-area th,
+    .widget-area td,
+    .widget-area caption {
+        padding: 0;
+    }
+    .widget-area th,
+    .widget-area td {
+        text-align: center;
+    }
+    .widget-area th {
+        font-size: {{ site.font_size_14px }};
+    }
+    .widget-area tfoot td {
+        text-align: left;
+    }
+    .widget-area tfoot tr:hover {
+        background: none;
+    }
+    .widget-area tfoot #next {
+        text-align: right;
+    }
+    .widget-area caption {
+        line-height: 40px;
+    }
+    .widget {
+        margin: 0 0 10px;
+        float: left;
+        width: 100%;
+    }
+    .widget-title {
+        font-size: {{ site.font_size_22px }};
+        font-style: italic;
+        line-height: 20px;
+    }
+
+    /* Collapsible lists */
+    .collapsibleList li > input + * { /* collapsible trees/lists used in sidepanel.html (on left); added by me */
+        display: none;
+    }
+
+    .collapsibleList li > input:checked + * {
+        display: block;
+    }
+
+    .collapsibleList li > input {
+        display: none;
+    }
+
+    .collapsibleList label {
+        cursor: pointer;
+    }
+
+    .sticky {
+        /* https://www.w3schools.com/howto/howto_css_sticky_element.asp */
+        position: sticky; /* fixed works but at wrong location (it needs to stick to top of screen) */
+        top:-30px;
+        font-size: {{ site.font_size_18px }};
+    }
+
+    /* Bullet sizes in unordered list elements inside the collapsible list; only applies if using style="list-style-type:disc" (which isn't used anymore) */
+    li::marker {
+        font-size: {{ site.font_size_11px }};
+    }
+</style>
+
+<!-- ALL POSTS COUNTER -->
+{% assign counter-total = 0 %}
+{% for post in site.posts %}
+    {% assign counter-total = counter-total | plus: 1 %}
+{% endfor %}
+
+{% assign counter-history = 0 %}
+{% for post in site.categories.history %}
+    {% assign counter-history = counter-history | plus: 1 %}
+{% endfor %}
+
+
+<!-- This is to make selected category in the sidebar bold -->
+{% assign postcategory = page.url | split:"/" | split:" " %}
+
+{% assign myvariable = {{postcategory[2] | slugify}} %}
+
+<!-- {% assign arrow = '&#128898;  ' %} -->
+
+
+<div id="secondary" class="widget-area">
+    <!-- categories -->
+    <label class="widget-title">Articles</label>
+    <br>
+
+    <!-- "%Y-%m-%d" or %Y-%b-%d -->
+
+    <ul style="padding-left:20px; padding-top:10px;">
+
+
+
+        <!-- All posts -->
+        <ul class="collapsibleList" style="list-style-image: url('{{ site.url }}/assets/symbols/angle-left.svg');">
+            <li>
+
+            <label for="mylist-node-all">All articles <a href="{{ site.url }}/blog/all-articles.html" title="Everything I posted in chronological order.">({{ counter-total }})</a></label>
+
+            <input type="checkbox" id="mylist-node-all" />
+
+            <ul style="list-style-image: url('{{ site.url }}/assets/symbols/bullet-raised.svg');">
+            {% for post in site.posts %}
+                {% if page.url == post.url %}
+                <li> <a href="{{ site.url }}{{ post.url }}"> <b>{{post.date | date: "%Y-%m-%d"}} {{ post.title }}</b></a> </li>
+                {% else %}
+                <li> <a href="{{ site.url }}{{ post.url }}">{{post.date | date: "%Y-%m-%d"}} {{ post.title }}</a> </li>
+                {% endif %}
+            {% endfor %}
+            </ul>
+            </li>
+        </ul>
+
+
+
+
+
+
+
+        <ul class="collapsibleList" style="list-style-image: url('{{ site.url }}/assets/symbols/angle-left.svg');">
+            <li>
+            {% if postcategory[2] == '"history",' or page.url == '/blog/history.html' %}
+            <label for="mylist-node-history"><b>History </b><a href="{{ site.url }}/blog/history.html" title="Show all posts in this category">({{ counter-history }})</a></label>
+            {% else %}
+            <label for="mylist-node-history">History <a href="{{ site.url }}/blog/history.html" title="Show all posts in this category">({{ counter-history }})</a></label>
+            {% endif %}
+
+    {% if myvariable == 'history' %}
+            <input type="checkbox" checked id="mylist-node-history" />
+    {% else %}
+            <input type="checkbox" id="mylist-node-history" />
+    {% endif %}
+
+            <ul style="list-style-image: url('{{ site.url }}/assets/symbols/bullet-raised.svg');">
+            {% for post in site.posts %}
+            {% for pc in post.categories %}
+            {% if pc == 'history' %}
+            {% if page.url == post.url %}
+            <li> <a href="{{ site.url }}{{ post.url }}"> <b>{{post.date | date: "%Y-%m-%d"}} {{ post.title }}</b></a> </li>
+            {% else %}
+            <li> <a href="{{ site.url }}{{ post.url }}">{{post.date | date: "%Y-%m-%d"}} {{ post.title }}</a> </li>
+            {% endif %}
+            {% endif %}
+            {% endfor %}
+            {% endfor %}
+            </ul>
+            </li>
+        </ul>
+
+
+
+    </ul>
+
+    <br>
+
+    <label class="widget-title"><a href="{{ site.url }}/tags.html" title="Tags">Tags</a></label>
+
+    <!-- Table Of Contents (TOC): -->
+    <div class="sticky" id="id-list">
+        {% if page.toc %}
+            <br>
+            <br>
+            <label class="widget-title">Page contents <a href="#top" onclick="document.getElementById('id-list-items').scrollTo({top: 0, behavior: 'smooth'}); return true;">^</a></label>
+            <ol id="id-list-items" style="padding-top:10px; max-height: 80vh;"> <!-- scrollbar-width: thin; -->
+                {% for entry in page.toc %}
+                    <li> <a href="{{ site.url }}{{ page.url }}#{{ entry | slugify }}">{{ entry }}</a> </li>
+                {% endfor %}
+            </ol>
+        {% endif %}
+    </div>
+
+</div>

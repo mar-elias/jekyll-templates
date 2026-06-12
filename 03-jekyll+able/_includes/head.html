@@ -1,0 +1,31 @@
+<head>
+    <meta charset="UTF-8" />
+
+    <title>{{ page.title }}</title>
+
+    <!-- website css -->
+    <link rel="stylesheet" href="{{ site.url }}/css/style.css" type="text/css"/>
+    <link rel="stylesheet" href="{{ site.url }}/css/print.css" type="text/css"/>
+    <link rel="shortcut icon" type="image/ico" href="{{ site.url }}/assets/favicon.ico"> <!-- favicon -->
+
+    <!-- the background of everything -->
+    <style type="text/css">
+        body { background-image: none; }
+
+        /* Fonts: this way of including it using relative_url instead of a direct link using site.url is necessary for fonts to work on main page immediately */
+        @font-face { font-family: Traditional-Arabic;                    src: url('{{ "/css/fonts/Traditional-Arabic.ttf" | relative_url }}'); }
+        @font-face { font-family: Traditional-Arabic; font-weight: bold; src: url('{{ "/css/fonts/Traditional-Arabic-Bold.ttf" | relative_url }}');}
+
+        @font-face { font-family: Trajan; font-weight: normal; src: url('{{ "/css/fonts/TrajanPro.ttf" | relative_url }}'); }
+        @font-face { font-family: Trajan; font-weight: bold; src: url('{{ "/css/fonts/TrajanPro-Bold.otf" | relative_url }}');}
+
+        /*Change pointer/change cursor */
+        /*
+        html, body
+        {
+            cursor: url("{{ site.url }}/assets/favicon.ico"), default;
+        }
+        */
+    </style>
+
+</head>

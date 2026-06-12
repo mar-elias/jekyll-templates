@@ -1,0 +1,21 @@
+<head>
+
+    <meta charset="utf-8">
+
+    <title>{{ page.title }}</title>
+
+    <meta content="Author" name="{{ site.author }}">
+
+    <link href="{{ site.url }}/assets/favicon-holybook.ico" type="image/ico" rel="icon">
+    <link href="{{ site.url }}/css/style.css" rel="stylesheet">
+
+    <style type="text/css">
+        /* Fonts: this way of including it using relative_url instead of a direct link using site.url is necessary for fonts to work on main page immediately */
+        @font-face { font-family: Traditional-Arabic;                    src: url('{{ "/css/fonts/Traditional-Arabic.ttf" | relative_url }}'); }
+        @font-face { font-family: Traditional-Arabic; font-weight: bold; src: url('{{ "/css/fonts/Traditional-Arabic-Bold.ttf" | relative_url }}');}
+
+        @font-face { font-family: Trajan; font-weight: normal; src: url('{{ "/css/fonts/TrajanPro.ttf" | relative_url }}'); }
+        @font-face { font-family: Trajan; font-weight: bold; src: url('{{ "/css/fonts/TrajanPro-Bold.otf" | relative_url }}');}
+    </style>
+
+</head>

@@ -1,0 +1,85 @@
+<footer id="footer" style="text-align: center; margin-top: 20px;">
+
+    <style>
+        /* This will limit this style to the current file only */
+        .footer-main table {
+            width: 100%;
+            margin-bottom: 0px;
+            table-layout: fixed;
+            border-collapse: collapse;
+            border: none;
+        }
+        .footer-main td {
+            width: 33%;
+            border: none;
+        }
+    </style>
+
+    <div class="footer-main"> <!-- add class="class1 noPrint" to not print footer -->
+        <center>
+        <div>
+
+            <table>
+                <tr>
+                    <td style="text-align: left;">
+                        <a href="{{site.url}}/LICENSE.txt">Able</a> design.
+                    </td>
+                    <td style="text-align: center;">
+                        <a aria-label="Email me" title="Email me" href="mailto:{{ site.email }}">
+                            <svg width="22" color="000000" margin="0px 0px" viewBox="0 0 18 16">
+                                <path d="M17.388,4.751H2.613c-0.213,0-0.389,0.175-0.389,0.389v9.72c0,0.216,0.175,0.389,0.389,
+                                            0.389h14.775c0.214,0,0.389-0.173,0.389-0.389v-9.72C17.776,4.926,17.602,4.751,17.388,
+                                            4.751 M16.448,5.53L10,11.984L3.552,5.53H16.448zM3.002,6.081l3.921,3.925l-3.921,
+                                            3.925V6.081z M3.56,14.471l3.914-3.916l2.253,2.253c0.153,0.153,0.395,0.153,0.548,
+                                            0l2.253-2.253l3.913,3.916H3.56z M16.999,13.931l-3.921-3.925l3.921-3.925V13.931z"></path>
+                            </svg>
+                            <span class="username">E-mail</span> {% comment %} {{ site.name }} {% endcomment %}
+                        </a>
+
+                        {% if site.youtube_url %}
+                        &nbsp; &nbsp; <!-- this is a space -->
+                        <a aria-label="My Youtube channel" title="My Youtube channel" href="{{ site.youtube_url }}">
+                            <svg width="20" fill="currentColor" color="#dd4b39" margin="0px 0px" viewBox="0 0 16 13">
+                                <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172
+                                        .883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082
+                                        2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312
+                                        -5.569.334-6.18.335h-.142c-.309 0-1.587-.006 -2.927-.052l-.17-.006-.087-.004-.171-.007-.171
+                                        -.007c-1.11-.049 -2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986
+                                        -.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l
+                                        .007-.103.003-.052.008-.104.022-.26.01-.104c .048-.519.119-1.023.22-1.402a2.007 2.007 0 0
+                                        1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17 -.007.172-.006.086-.003.171-.007A99.788 99.788
+                                        0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157 -2.408L6.4 5.209z"></path>
+                            </svg>
+                            <span class="username">{{ site.youtube_username }}</span>
+                        </a>
+                        {% endif %}
+
+                    </td>
+                    <td style="text-align: right;">
+                        {% if site.blog_last_modified %}
+                            <span style="font-size: 16px;">Last updated: {{site.blog_last_modified}}</span>
+                        {% endif %}
+                    </td>
+                </tr>
+            </table>
+
+            {% comment %}
+                &nbsp;&nbsp;
+                <a aria-label="My Github" title="My Github" href="{{ site.github_url }}">
+                    <svg width="20" viewBox="0 0 16 15" width="20">
+                        <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38
+                                    0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95
+                                    0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68
+                                    0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15
+                                    0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82
+                                    1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
+                    </svg>
+                    <span class="username">{{ site.github_username }}</span>
+                </a>
+            {% endcomment %}
+
+        </div>
+        </center>
+    </div>
+
+</footer>

@@ -1,0 +1,67 @@
+---
+layout: default
+---
+
+<style>
+    .hentry {
+        /* border: 1px solid; the post border*/
+        box-shadow: 1px 1px 5px #5b5b5b;
+        -moz-box-sizing:    border-box;
+        box-sizing:         border-box;
+        clear: both;
+        float: left;
+        margin: 0 0 45px; /* empty space above footer */
+        padding: 20px 23px 13px; /* padding of inside text */
+        position: relative;
+        width: 95%;
+        background-color: rgb( 255, 255, 255 ); /* immediate post background colour (level 1) */
+        border-radius: 10px; /* rounded corners */
+    }
+
+    .entry-title {
+        width: 95%;
+        /*font-size: {{ site.font_size_36px }};
+        margin-bottom: 0;*/
+    }
+</style>
+
+
+
+<div>
+
+    <header class="entry-title">
+
+
+<!--Back button-->
+        <table style="width:100%; border-collapse:collapse; border-spacing:0px; padding:0px; cellpadding:0px; cellspacing:0px; line-height:0px; margin-bottom:0px; padding-bottom:0mm;">
+            <tr>
+                <td style="width:1%; padding-bottom: 0mm;">
+
+                    {% assign url_parts = page.url | split: '/' %}
+                    {% assign count_parts = url_parts.size | minus: 1 %}
+                    {% assign whole_url_but_one = url_parts | slice: 0, count_parts | join: '/' %}
+
+                    {% if count_parts == 1 %}
+                        <a href="{{ site.url }}" class="button"><</a>
+                    {% elsif whole_url_but_one == "/topics" or
+                             whole_url_but_one == "/resources" %}
+                        <a href="{{ site.url }}" class="button"><</a>
+                    {% elsif whole_url_but_one == "/articles" %}
+                        <a href="{{ site.url }}/contents/articles.html" class="button"><</a>
+                    {% else %}
+                        <a href="{{ site.url }}{{ whole_url_but_one }}.html" class="button"><</a>
+                    {% endif %}
+
+                </td>
+                <td style="width:99%; padding-bottom: 0mm;">
+                    <h2 style="text-align: center;">{{ page.title }}</h2>
+                </td>
+            </tr>
+        </table>
+    </header>
+
+    <article class="hentry">
+        {{ content }}
+    </article>
+
+</div>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<style>
+    .site-title { /* Site title at top */
+        font-weight: 700;
+        margin-right: auto;
+        margin-left: auto;
+        min-width: 480px;
+        max-width: 1280px;
+        margin-bottom: 0;
+    }
+
+    /* =Page Structure
+    -------------------------------------------------------------- */
+    #page-liner {
+        display: flex; /* lets sticky property work */
+
+        background: rgb( 230, 230, 230 ); /* 2/3 post background colour (level 2) */
+        margin: auto auto 26px auto; /* BOTTOM BORDER */
+        min-width: 720px; /* minimum website width */
+        max-width: 1280px;
+        /*min-height: 1000px; Pushes everything down */
+        zoom: 1;
+    }
+
+    #primary {
+        width: 75%;
+        float: left;
+        word-wrap: break-word;
+
+        margin-top: 0;
+        margin-right: 0;
+        margin-bottom: 200;
+        margin-left: 25%;
+    }
+
+    /* This is a sticky footer (remains with scrolling). If you don't use it, the footer will appear at top of page on mobile phones. */
+    .footer-main {
+        /* position: fixed; */ /* This will make it visible all the time */
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        /* background-color: #f2f2f2;
+        background-color: #dcdcdc; same as bg */
+        background-color: #e6e6e6;
+        color: black;
+        text-align: center;
+    }
+</style>
+
+<html>
+
+
+    {% include head.html %}
+
+
+    <body id="page-liner" class="border-shadows-EL">
+        <div>
+
+            {% include header.html %}
+
+            <div id="page-liner">
+                <div id="primary">
+                    {{ content }}
+                </div>
+
+                {% include sidepanel.html %}
+
+                <!-- <br> does not work! -->
+            </div>
+
+
+<!-- The footer -->
+<!-- <footer> -->
+    {% include footer.html %}
+<!-- </footer> -->
+
+<!--
+    <footer>
+        <div class="wrapper">
+        <!- -<p style="margin-top:6cm;  padding-top: 3cm;">Author: {{ site.name }}</p> - ->
+        <p>Author: {{ site.name }}</p>
+        <p><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+        </div>
+    </footer>
+-->
+
+<!--
+    <table>
+    <tr>
+        <td>{{ site.name }}</td>
+    </tr>
+    <tr>
+        <td><a class="u-email" href="mailto:{{ site.email }}">{{ site.email }}</a></td>
+    </tr>
+    </table>
+-->
+
+
+        </div> <!-- page -->
+
+    </body>
+
+</html>

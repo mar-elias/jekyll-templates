@@ -1,0 +1,126 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+#
+# If you need help with YAML syntax, here are some quick references for you:
+# https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
+# https://learnxinyminutes.com/docs/yaml/
+#
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+
+# variables defined here may be used as: {{ site.name }}
+title: Website name
+title_eng: Website name
+email: support@domain.com
+blog_last_modified: 2025-Oct-12
+
+author: admin
+name: admin
+namelast:
+namepre:
+namepost:
+
+description: >- # this means to ignore newlines until "baseurl:"
+  Copied to about page
+subtitle_centred_on_image: Follow The Truth Wherever It May Lead
+outsideurl: ""
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://domain.org" # the base hostname & protocol for your site, e.g. http://example.com
+url_bare: "domain.org"
+url_to_go: "https://anotherwebsite.org"
+url_to_go_bare: "anotherwebsite.org"
+cover: "assets/background.jpg"
+category-list: [blog, history]
+
+# Custom paths: (note you can't put them in "permalink: /resources/books.html")
+path_books:     "resources/books" # {{ site.path_books }}
+
+path_blog_data_folder: assets/posts # use as {{ site.path_blog_data_folder }} was blog
+
+#twitter_username: jekyllrb
+github_username:
+github_url:  #https://www.github.com/..
+youtube_username:
+youtube_url:
+youtube_url2:
+
+# Build settings
+markdown: kramdown
+#theme: minima
+#plugins:
+#  - jekyll-feed
+
+# Exclude from processing.
+# The following items will not be processed, by default.
+# Any item listed under the `exclude:` key here will be automatically added to
+# the internal "default list".
+#
+# Excluded items can be processed by explicitly listing the directories or
+# their entries' file path in the `include:` list.
+
+# Note: All folders starting with '_' are automatically excluded (not included in the built site). In addition to them is the following list:
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+  - templates/
+#   - .sass-cache/
+#   - .jekyll-cache/
+#   - gemfiles/
+#   - node_modules/
+#   - vendor/bundle/
+#   - vendor/cache/
+#   - vendor/gems/
+#   - vendor/ruby/
+
+include:
+  - css/
+
+# Font sizes: (rem is used for scaling on phone)
+# Either: (based one 1rem = 16px)
+font_size_10px: 0.625rem
+font_size_11px: 0.6875rem
+font_size_12px: 0.75rem
+font_size_14px: 0.875rem
+font_size_16px: 1.0rem
+font_size_18px: 1.125rem
+font_size_20px: 1.25rem
+font_size_22px: 1.375rem
+font_size_24px: 1.5rem
+font_size_26px: 1.625rem
+font_size_28px: 1.75rem
+font_size_30px: 1.875rem
+font_size_34px: 2.125rem
+font_size_36px: 2.25rem
+font_size_48px: 3rem
+font_size_52px: 3.25rem
+font_size_55px: 3.4375rem
+font_size_60px: 3.75rem
+# Or: (ORIGINAL FONT SCALING)
+# font_size_10px: 10px
+# font_size_11px: 11px
+# font_size_12px: 12px
+# font_size_14px: 14px
+# font_size_16px: 16px
+# font_size_18px: 18px
+# font_size_20px: 20px
+# font_size_22px: 22px
+# font_size_24px: 24px
+# font_size_26px: 26px
+# font_size_28px: 28px
+# font_size_34px: 34px
+# font_size_36px: 36px
+# font_size_48px: 48px
+# font_size_52px: 52px
+# font_size_55px: 55px
+# font_size_60px: 60px

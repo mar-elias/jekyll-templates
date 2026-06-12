@@ -1,0 +1,119 @@
+---
+layout: page
+title: Tags
+permalink: /tags.html
+---
+
+<!-- https://jekyllrb.com/docs/posts/#tags -->
+
+
+<!-- 1. Create empty arrays -->
+{% assign tags = '' | split: ',' %}
+{% assign unique_tags = '' | split: ',' %}
+{% assign counter_unique = 0 %}
+
+{% assign tags_posts = '' | split: ',' %}
+{% assign unique_tags_posts = '' | split: ',' %}
+{% assign counter_unique_tags_posts = 0 %}
+
+
+
+<!-- 2. Find unique tags: -->
+<!-- in pages: -->
+{% for page in site.pages %}
+    {% for page_tag in page.tags %}
+        {% assign tags = tags | push: page_tag %}
+    {% endfor %}
+{% endfor %}
+
+<!-- in posts: -->
+{% for post in site.posts %}
+    {% for page_tag in post.tags %}
+        {% assign tags_posts = tags_posts | push: page_tag %}
+    {% endfor %}
+{% endfor %}
+
+
+
+<!-- 3. Find Unique tags -->
+{% assign tags = tags | sort %}
+{% for tag in tags %}
+  <!-- If not equal to previous then it must be unique as sorted -->
+  {% unless tag == previous %}
+    <!-- Push to unique_tags -->
+    {% assign unique_tags = unique_tags | push: tag %}
+    {% assign counter_unique = counter_unique | plus: 1 %}
+  {% endunless %}
+  {% assign previous = tag %}
+{% endfor %}
+
+{% assign tags_posts = tags_posts | sort %}
+{% for tag in tags_posts %}
+  {% unless tag == previous %}
+    {% assign unique_tags_posts = unique_tags_posts | push: tag %}
+    {% assign counter_unique_tags_posts = counter_unique_tags_posts | plus: 1 %}
+  {% endunless %}
+  {% assign previous = tag %}
+{% endfor %}
+
+
+
+<!--
+<ul>
+{% for tag in unique_tags %}
+    <li>{{ tag }}</li>
+{% endfor %}
+</ul>
+-->
+
+<h4>Pages ({{counter_unique}})</h4>
+<!-- loop tags: -->
+<ul style="padding-left:50px;"> <!-- class="collapsibleList" (to make collapsible list 1/3) -->
+{% for tag in unique_tags %}
+    <li>
+        <label"> <!--  for="mylist-node5674{{tag}} (to make collapsible list 2/3) -->
+            <h6 style="margin-bottom:2px">
+                {{tag}}
+            </h6>
+        </label>
+        <!-- <input type="checkbox" checked id="mylist-node5674{{tag}}" /> (to make collapsible list 3/3) -->
+        <ul style="list-style-type:disc; margin-bottom:5px">
+            {% for page in site.pages %}
+                {% for page_tag in page.tags %}
+                    {% if page_tag == tag %}
+                        <li>
+                            <a href="{{ site.url }}{{ page.url }}">{{ page.title }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </ul>
+    </li>
+{% endfor %}
+</ul>
+
+
+<h4>Posts ({{counter_unique_tags_posts}})</h4>
+<ul style="padding-left:50px;"> <!-- class="collapsibleList" (to make collapsible list 1/3) -->
+{% for tag in unique_tags_posts %}
+    <li>
+        <label"> <!--  for="mylist-node5674{{tag}} (to make collapsible list 2/3) -->
+            <h6 style="margin-bottom:2px">
+                {{tag}}
+            </h6>
+        </label>
+        <!-- <input type="checkbox" checked id="mylist-node5674{{tag}}" /> (to make collapsible list 3/3) -->
+        <ul style="list-style-type:disc; margin-bottom:5px">
+            {% for post in site.posts %}
+                {% for page_tag in post.tags %}
+                    {% if page_tag == tag %}
+                        <li>
+                            <a href="{{ site.url }}{{ post.url }}">{{ post.date | date: "%Y-%m-%d" }} {{ post.title }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </ul>
+    </li>
+{% endfor %}
+</ul>
